@@ -123,13 +123,11 @@ function renderQuestion(){
   q.opts.forEach((opt,n)=>{
    const label=document.createElement("label");label.className="option";
    const input=document.createElement("input");input.type=q.type==="multi"?"checkbox":"radio";input.name="answer";input.value=opt;
-   input.checked=q.type==="multi"?val.includes(opt):val===opt;
+   input.checked=q.type==="multi"?(val.includes(opt)||(opt==="Outro"&&val.some(x=>x.startsWith("Outro:")))):(val===opt||(opt==="Outro"&&typeof val==="string"&&val.startsWith("Outro:")));
    input.addEventListener("change",()=>{
     if(q.type==="multi"){let arr=[...valueFor(state.index)];if(input.checked&&!arr.includes(opt))arr.push(opt);if(!input.checked)arr=arr.filter(x=>x!==opt);state.answers[state.index]=arr}
     else state.answers[state.index]=opt;
     state.saved=false;
-    if(q.type==="one"&&opt!=="Outro"&&q.opts.length<5)setTimeout(()=>{},0);
-    updateOther();
    });
    label.append(input,document.createTextNode(opt));$("fields").append(label);
   });
@@ -144,7 +142,6 @@ function renderQuestion(){
  $("back").disabled=state.index===0;
  $("next").textContent=state.index===total-1?"Revisar respostas":"Continuar";
 }
-function updateOther(){}
 function answerText(i){const v=state.answers[i];if(Array.isArray(v))return v.join(", ")||"Não informado";return String(v||"").trim()||"Não informado"}
 function goSummary(){
  wizard.classList.add("hidden");summary.classList.remove("hidden");
