@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171326">
+  <meta name="description" content="Questionário de levantamento técnico para planejamento de site e hospedagem.">
+  <title>Questionário de Projeto | Yato</title>
+  <style>
+    :root{color-scheme:dark;--bg:#100d19;--panel:#1b1728;--panel2:#231d34;--line:#39304f;--text:#f5f1ff;--muted:#b7aecb;--purple:#a78bfa;--purple2:#7c3aed;--green:#86efac;--danger:#fda4af}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#33204e 0,transparent 38%),radial-gradient(ellipse at 100% 40%,#25163d 0,transparent 32%),var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}
+    button,input,textarea{font:inherit} button{cursor:pointer}
+    .wrap{width:min(860px,100%);margin:auto;padding:34px 20px 60px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#c4b5fd,#7c3aed);display:grid;place-items:center;color:#170e29;font-size:22px;font-weight:900;box-shadow:0 8px 30px #8b5cf655}
+    .brand strong{display:block;letter-spacing:.02em}.brand small{color:var(--muted)}
+    .tag{font-size:12px;color:#d8ccff;border:1px solid #59477d;border-radius:99px;padding:7px 11px;white-space:nowrap}
+    .intro{margin-bottom:22px}.eyebrow{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    h1{font-size:clamp(28px,5vw,42px);line-height:1.08;margin:10px 0 12px;letter-spacing:-.04em}.intro p{color:var(--muted);line-height:1.65;max-width:690px;margin:0}
+    .notice{margin-top:18px;border:1px solid #59477d;background:#211a31;border-radius:16px;padding:14px 16px;color:#ddd3f3;font-size:13px;line-height:1.55}
+    .card{background:linear-gradient(160deg,#211b31ee,#171321f2);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 22px 70px #0005}
+    .topline{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:13px;margin-bottom:13px}
+    .progress{height:7px;background:#332a45;border-radius:99px;overflow:hidden;margin-bottom:28px}.bar{height:100%;width:0;background:linear-gradient(90deg,#8b5cf6,#c4b5fd);border-radius:99px;transition:width .25s}
+    .section{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(21px,4vw,29px);line-height:1.2;margin:0 0 10px;letter-spacing:-.025em}.hint{color:var(--muted);font-size:14px;line-height:1.55;margin:0 0 22px}
+    .fields{display:grid;gap:11px}.option{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:#211b30;border-radius:13px;padding:14px 15px;transition:.15s;cursor:pointer;line-height:1.4}.option:hover{border-color:#8066b3;background:#29213c}.option:has(input:checked){border-color:var(--purple);background:#382958}.option input{accent-color:#a78bfa;margin-top:3px;width:17px;height:17px;flex:none}
+    .field{width:100%;background:#120f1c;border:1px solid #4a3d61;border-radius:12px;padding:14px;color:var(--text);outline:none;min-height:52px}.field:focus{border-color:var(--purple);box-shadow:0 0 0 3px #a78bfa22}.field::placeholder{color:#8e849f}textarea.field{min-height:120px;resize:vertical}
+    .controls{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.btn{border:0;border-radius:12px;padding:13px 19px;font-weight:750;transition:transform .15s,opacity .15s}.btn:active{transform:scale(.98)}.btn:disabled{opacity:.4;cursor:not-allowed}.primary{background:linear-gradient(110deg,#a78bfa,#8b5cf6);color:#160e25;box-shadow:0 8px 24px #8b5cf633}.secondary{background:#302840;color:var(--text);border:1px solid #514364}.quiet{background:transparent;color:var(--muted);padding-inline:8px}
+    .summary-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px}.summary-head p{color:var(--muted);margin:7px 0 0;line-height:1.5}.answer-list{display:grid;gap:10px}.answer{border:1px solid var(--line);border-radius:13px;padding:14px;background:#1a1626}.answer-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.answer strong{font-size:14px;line-height:1.45}.answer p{margin:8px 0 0;color:#c9c0d8;white-space:pre-wrap;line-height:1.5;font-size:14px;overflow-wrap:anywhere}.edit{border:0;background:transparent;color:var(--purple);font-size:13px;font-weight:700;padding:3px 0}
+    .savebox{margin-top:22px;padding:16px;border:1px solid #59477d;background:#211a31;border-radius:15px}.savebox p{color:#d4cbe4;font-size:13px;line-height:1.55;margin:0 0 12px}.linkrow{display:flex;gap:8px}.linkrow input{min-width:0;flex:1}.status{font-size:13px;color:var(--green);min-height:20px;margin-top:9px}
+    .footer{color:#8e849f;text-align:center;font-size:12px;margin-top:24px;line-height:1.6}.hidden{display:none!important}
+    .modal-note{color:var(--muted);font-size:13px;line-height:1.55;margin-top:14px}
+    @media(max-width:560px){.wrap{padding:22px 14px 42px}header{align-items:flex-start}.tag{font-size:10px}.controls .btn{padding:12px 14px}.linkrow{flex-direction:column}.linkrow .btn{width:100%}.summary-head{display:block}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand"><div class="mark">Y</div><div><strong>YATO</strong><small>Planejamento digital</small></div></div>
+      <span class="tag">Levantamento técnico</span>
+    </header>
+    <section class="intro">
+      <div class="eyebrow">Vamos entender seu projeto</div>
+      <h1>Questionário de hospedagem e site</h1>
+      <p>Responda uma pergunta por vez. No final, você poderá revisar tudo, salvar suas respostas em um link personalizado e abrir o WhatsApp com a mensagem completa pronta para enviar.</p>
+      <div class="notice"><strong>Sobre a hospedagem:</strong> a proposta inicial considera a Vercel Pro (US$ 20/mês como preço-base), com CDN global, HTTPS e hospedagem de aplicações web. O valor final pode aumentar conforme o uso e serviços adicionais. Domínio, e-mail profissional, banco de dados e armazenamento podem ter custos separados. A capacidade para o tráfego estimado será avaliada conforme as respostas.</div>
+    </section>
+    <section id="wizard" class="card">
+      <div class="topline"><span id="counter">Pergunta 1 de 28</span><span id="percent">4%</span></div>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+      <div class="section" id="section">Sobre o projeto</div>
+      <h2 id="question"></h2>
+      <p class="hint" id="hint"></p>
+      <div class="fields" id="fields"></div>
+      <div class="controls">
+        <button id="back" class="btn secondary" type="button">Voltar</button>
+        <button id="next" class="btn primary" type="button">Continuar</button>
+      </div>
+    </section>
+    <section id="summary" class="card hidden">
+      <div class="summary-head"><div><div class="eyebrow">Revisão final</div><h2>Confira suas respostas</h2><p>Você pode voltar a qualquer pergunta para alterar uma resposta. Quando estiver tudo certo, salve o link personalizado.</p></div></div>
+      <div id="answers" class="answer-list"></div>
+      <div class="savebox">
+        <p><strong>Salvar respostas:</strong> gere um link personalizado que guarda as respostas no próprio endereço. O conteúdo não é enviado para um banco de dados ou armazenado na hospedagem.</p>
+        <div class="linkrow"><input id="savedLink" class="field" readonly placeholder="Seu link aparecerá aqui"><button id="save" class="btn primary" type="button">Salvar</button></div>
+        <div id="saveStatus" class="status" role="status" aria-live="polite"></div>
+        <p class="modal-note">Atenção: quem tiver acesso ao link poderá visualizar as respostas. Não inclua senhas, documentos pessoais ou informações confidenciais.</p>
+      </div>
+      <div class="controls">
+        <button id="editAll" class="btn secondary" type="button">Voltar às perguntas</button>
+        <button id="send" class="btn primary" type="button" disabled>Enviar pelo WhatsApp</button>
+      </div>
+    </section>
+    <footer class="footer">Questionário de levantamento técnico · Yato<br>As respostas só serão encaminhadas quando você clicar em “Enviar pelo WhatsApp”.</footer>
+  </main>
+<script>
+const questions = [
+ {s:"1 · Sobre o projeto",q:"Qual é a finalidade principal do site?",type:"multi",opts:["Apresentação institucional da empresa","Divulgação de produtos ou serviços","Catálogo de produtos","Loja virtual","Plataforma de serviços","Portal de informações ou notícias","Outro"],other:true},
+ {s:"1 · Sobre o projeto",q:"Qual é o segmento de atuação da empresa?",type:"text",ph:"Ex.: comércio, indústria, saúde, serviços..."},
+ {s:"1 · Sobre o projeto",q:"Em que etapa o projeto está?",type:"one",opts:["Já está em desenvolvimento","Ainda estamos planejando","Já existe um site e queremos migrá-lo","Outro"],other:true},
+ {s:"1 · Sobre o projeto",q:"Existe previsão para publicação?",type:"text",ph:"Informe uma data, período ou 'ainda não definido'."},
+ {s:"2 · Público e acessos",q:"Quantos visitantes vocês esperam receber diariamente?",type:"one",opts:["Até 500","Aproximadamente 1.000","Entre 1.000 e 5.000","Entre 5.000 e 10.000","Mais de 10.000","Ainda não sabemos"]},
+ {s:"2 · Público e acessos",q:"Esse número representa o quê?",type:"one",opts:["Pessoas diferentes acessando o site","Total de visitas, incluindo pessoas que retornam","Apenas uma estimativa inicial","Não sabemos ao certo"]},
+ {s:"2 · Público e acessos",q:"Existe previsão de picos de acessos simultâneos?",type:"textarea",ph:"Ex.: campanhas, lançamentos, promoções, eventos ou nenhum pico previsto."},
+ {s:"2 · Público e acessos",q:"De onde será principalmente o público do site?",type:"one",opts:["Apenas da cidade ou região","Todo o Brasil","Público internacional","Ainda não definido"]},
+ {s:"3 · Funcionalidades",q:"Quais recursos o site deverá oferecer?",type:"multi",opts:["Páginas institucionais (início, sobre, contato etc.)","Formulário de contato","Botão de WhatsApp","Catálogo de produtos","Loja virtual e pagamentos","Área de login e cadastro","Painel administrativo","Sistema de agendamentos","Sistema de pesquisa","Área exclusiva para clientes","Publicação de notícias ou artigos","Outro"],other:true},
+ {s:"3 · Funcionalidades",q:"Os visitantes precisarão criar contas ou fazer login?",type:"one",opts:["Sim","Não","Talvez futuramente","Ainda não sabemos"]},
+ {s:"3 · Funcionalidades",q:"A empresa precisará atualizar textos, imagens e produtos por conta própria?",type:"one",opts:["Sim, por um painel administrativo","Não, as atualizações serão feitas pelo desenvolvedor","Ainda não sabemos"]},
+ {s:"3 · Funcionalidades",q:"O site precisará armazenar informações?",hint:"Exemplos: cadastros, pedidos, contatos, histórico de clientes ou agendamentos.",type:"one",opts:["Sim","Não","Ainda não definido"]},
+ {s:"3 · Funcionalidades",q:"Se houver armazenamento de informações, quais dados ou registros serão necessários?",type:"textarea",ph:"Descreva ou responda 'não se aplica'."},
+ {s:"4 · Arquivos e conteúdo",q:"Que tipos de arquivos e mídias serão utilizados?",type:"multi",opts:["Apenas imagens e ícones","Muitas imagens em alta resolução","Vídeos","Documentos para visualização ou download","Arquivos enviados pelos próprios usuários","Ainda não sabemos"]},
+ {s:"4 · Arquivos e conteúdo",q:"Haverá armazenamento de arquivos enviados por visitantes ou funcionários?",type:"one",opts:["Sim","Não","Talvez futuramente","Ainda não sabemos"]},
+ {s:"4 · Arquivos e conteúdo",q:"Quem fornecerá textos, imagens, logotipo e demais conteúdos?",type:"textarea",ph:"Ex.: a própria empresa, equipe de marketing, desenvolvedor..."},
+ {s:"5 · Domínio e identidade",q:"A empresa deseja registrar um domínio próprio?",type:"one",opts:["Sim, preferencialmente .com.br","Sim, preferencialmente .com","Sim, outro domínio","Não, podemos usar inicialmente o endereço gratuito da Vercel","Ainda não sabemos"]},
+ {s:"5 · Domínio e identidade",q:"A empresa já possui um domínio registrado?",type:"one",opts:["Sim","Não","Não sabemos"]},
+ {s:"5 · Domínio e identidade",q:"Se já possui domínio, qual é o endereço?",type:"text",ph:"Ex.: empresa.com.br ou 'não se aplica'."},
+ {s:"5 · Domínio e identidade",q:"A empresa também deseja e-mails profissionais?",hint:"Ex.: contato@empresa.com.br. O e-mail não está incluído automaticamente na hospedagem Vercel.",type:"one",opts:["Sim","Não","Já temos esse serviço","Talvez futuramente"]},
+ {s:"6 · Hospedagem e infraestrutura",q:"A empresa possui preferência por algum tipo de hospedagem?",type:"one",opts:["Não, podemos utilizar a Vercel","Preferimos uma hospedagem tradicional","Gostaríamos de avaliar alternativas"]},
+ {s:"6 · Hospedagem e infraestrutura",q:"O site precisa ficar disponível continuamente, 24 horas por dia?",type:"one",opts:["Sim","Não necessariamente","Ainda não definido"]},
+ {s:"6 · Hospedagem e infraestrutura",q:"Existe necessidade de banco de dados?",hint:"Por exemplo, para contas, pedidos, cadastros ou conteúdo administrável.",type:"one",opts:["Sim","Não","Não sabemos"]},
+ {s:"6 · Hospedagem e infraestrutura",q:"O site precisará integrar com outros serviços?",type:"textarea",ph:"Ex.: sistemas da empresa, APIs, pagamentos, atendimento ou serviços de terceiros. Se não houver, informe."},
+ {s:"7 · Investimento e responsabilidades",q:"Qual orçamento mensal a empresa prevê para hospedagem e infraestrutura?",type:"one",opts:["Até R$ 30","Entre R$ 30 e R$ 60","Entre R$ 60 e R$ 100","Entre R$ 100 e R$ 200","Acima de R$ 200","Ainda não existe orçamento definido"]},
+ {s:"7 · Investimento e responsabilidades",q:"A empresa aceita serviços cobrados em dólar?",hint:"A Vercel Pro tem preço-base em USD. O valor em reais varia com câmbio, impostos e eventuais cobranças adicionais.",type:"one",opts:["Sim","Não","Precisamos avaliar"]},
+ {s:"7 · Investimento e responsabilidades",q:"Quem será responsável pelos pagamentos da hospedagem e dos serviços adicionais?",type:"one",opts:["A própria empresa","O desenvolvedor, mediante reembolso","Ainda será definido"]},
+ {s:"7 · Investimento e responsabilidades",q:"A empresa prefere manter os serviços registrados em contas próprias?",type:"one",opts:["Sim, queremos ser proprietários das contas e domínios","Podemos deixar sob administração do desenvolvedor","Gostaríamos de entender melhor essa questão"]},
+ {s:"8 · Considerações finais",q:"Existe alguma outra funcionalidade, necessidade ou preocupação que não foi mencionada?",type:"textarea",ph:"Conte aqui o que considerar importante."},
+ {s:"8 · Considerações finais",q:"A empresa possui exigências específicas de segurança, disponibilidade ou privacidade?",type:"textarea",ph:"Descreva ou informe 'não definido'."}
+];
+const state={answers:{},index:0,saved:false,savedUrl:""};
+const $=id=>document.getElementById(id);
+const wizard=$("wizard"),summary=$("summary");
+function valueFor(i){return state.answers[i]??(questions[i].type==="multi"?[]:"")}
+function renderQuestion(){
+ const q=questions[state.index],total=questions.length,pct=Math.round((state.index+1)/total*100);
+ $("counter").textContent="Pergunta "+(state.index+1)+" de "+total;
+ $("percent").textContent=pct+"%";$("bar").style.width=pct+"%";
+ $("section").textContent=q.s;$("question").textContent=q.q;$("hint").textContent=q.hint||"";
+ $("fields").innerHTML="";
+ const val=valueFor(state.index);
+ if(q.type==="text"||q.type==="textarea"){
+  const el=document.createElement(q.type==="text"?"input":"textarea");el.className="field";el.placeholder=q.ph||"Digite sua resposta...";el.value=val;el.addEventListener("input",()=>{state.answers[state.index]=el.value;state.saved=false});$("fields").append(el);
+ }else{
+  q.opts.forEach((opt,n)=>{
+   const label=document.createElement("label");label.className="option";
+   const input=document.createElement("input");input.type=q.type==="multi"?"checkbox":"radio";input.name="answer";input.value=opt;
+   input.checked=q.type==="multi"?val.includes(opt):val===opt;
+   input.addEventListener("change",()=>{
+    if(q.type==="multi"){let arr=[...valueFor(state.index)];if(input.checked&&!arr.includes(opt))arr.push(opt);if(!input.checked)arr=arr.filter(x=>x!==opt);state.answers[state.index]=arr}
+    else state.answers[state.index]=opt;
+    state.saved=false;
+    if(q.type==="one"&&opt!=="Outro"&&q.opts.length<5)setTimeout(()=>{},0);
+    updateOther();
+   });
+   label.append(input,document.createTextNode(opt));$("fields").append(label);
+  });
+  if(q.other){
+   const other=document.createElement("input");other.className="field";other.placeholder="Especifique, se necessário";other.id="otherField";
+   const current=Array.isArray(val)?val.find(x=>x.startsWith("Outro:"))?.slice(6)||"":typeof val==="string"&&val.startsWith("Outro:")?val.slice(6):"";
+   other.value=current;
+   other.addEventListener("input",()=>{const v=other.value.trim();let arr=q.type==="multi"?[...valueFor(state.index)].filter(x=>!x.startsWith("Outro")):valueFor(state.index);if(q.type==="multi"){if(v)arr.push("Outro: "+v);else if(arr.includes("Outro"))arr.push("Outro")}else arr=v?"Outro: "+v:"Outro";state.answers[state.index]=arr;state.saved=false});
+   $("fields").append(other);
+  }
+ }
+ $("back").disabled=state.index===0;
+ $("next").textContent=state.index===total-1?"Revisar respostas":"Continuar";
+}
+function updateOther(){}
+function answerText(i){const v=state.answers[i];if(Array.isArray(v))return v.join(", ")||"Não informado";return String(v||"").trim()||"Não informado"}
+function goSummary(){
+ wizard.classList.add("hidden");summary.classList.remove("hidden");
+ $("answers").innerHTML="";
+ questions.forEach((q,i)=>{
+  const item=document.createElement("div");item.className="answer";
+  const top=document.createElement("div");top.className="answer-top";
+  const title=document.createElement("strong");title.textContent=(i+1)+". "+q.q;
+  const edit=document.createElement("button");edit.className="edit";edit.textContent="Editar";edit.addEventListener("click",()=>{state.index=i;summary.classList.add("hidden");wizard.classList.remove("hidden");renderQuestion()});
+  top.append(title,edit);const p=document.createElement("p");p.textContent=answerText(i);item.append(top,p);$("answers").append(item);
+ });
+ $("send").disabled=!state.saved;
+}
+function encode(data){const bytes=new TextEncoder().encode(JSON.stringify(data));let binary="";bytes.forEach(b=>binary+=String.fromCharCode(b));return btoa(binary).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
+function decode(data){const b64=data.replace(/-/g,"+").replace(/_/g,"/");const binary=atob(b64+"=".repeat((4-b64.length%4)%4));const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return JSON.parse(new TextDecoder().decode(bytes))}
+function makeMessage(){
+ let lines=["QUESTIONÁRIO DE LEVANTAMENTO TÉCNICO","Projeto: hospedagem e desenvolvimento de site",""];
+ questions.forEach((q,i)=>{lines.push((i+1)+". "+q.q);lines.push(answerText(i));lines.push("")});
+ lines.push("Enviado pelo questionário online.");return lines.join("\n");
+}
+function save(){
+ const payload={v:1,answers:state.answers};
+ const url=location.href.split("#")[0]+"#respostas="+encode(payload);
+ state.saved=true;state.savedUrl=url;$("savedLink").value=url;$("send").disabled=false;
+ history.replaceState(null,"",url);
+ $("saveStatus").textContent="Link personalizado criado. Copie e guarde para reabrir suas respostas.";
+ if(navigator.clipboard?.writeText)navigator.clipboard.writeText(url).then(()=>$("saveStatus").textContent="Link criado e copiado. Guarde-o para reabrir suas respostas.").catch(()=>{});
+}
+$("back").addEventListener("click",()=>{if(state.index>0){state.index--;renderQuestion()}});
+$("next").addEventListener("click",()=>{if(state.index<questions.length-1){state.index++;renderQuestion()}else goSummary()});
+$("editAll").addEventListener("click",()=>{state.index=0;summary.classList.add("hidden");wizard.classList.remove("hidden");renderQuestion()});
+$("save").addEventListener("click",save);
+$("send").addEventListener("click",()=>{
+ if(!state.saved){$("saveStatus").textContent="Primeiro clique em Salvar para gerar seu link.";return}
+ const phone="5554981296959";
+ const url="https://wa.me/"+phone+"?text="+encodeURIComponent(makeMessage()+"\n\nLink das respostas: "+state.savedUrl);
+ window.location.href=url;
+});
+function loadSaved(){
+ const match=location.hash.match(/respostas=([^&]+)/);
+ if(!match)return false;
+ try{const payload=decode(match[1]);if(payload.v!==1||!payload.answers)return false;state.answers=payload.answers;state.saved=true;state.savedUrl=location.href;$("savedLink").value=location.href;goSummary();$("saveStatus").textContent="Respostas carregadas do link personalizado.";return true}catch(e){return false}
+}
+if(!loadSaved())renderQuestion();
+</script>
+</body>
+</html>
